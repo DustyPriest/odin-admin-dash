@@ -66,6 +66,10 @@ html {
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
 /* ------ VARIABLES ------ */
 
 :root {
@@ -73,11 +77,17 @@ html {
   --clr-backing-grey: #e2e8f0;
   --clr-text-grey: #636363;
   --clr-accent: #f0b429;
+
+  --padding-sml: 0.75rem;
+  --padding-med: 1.5rem;
+  --padding-lge: 2.5rem;
+  --padding-xlge: 4rem;
 }
 
 /* ------ MAIN ------ */
 
 body {
+  font-family: 'Roboto', sans-serif;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -85,6 +95,65 @@ body {
 
 nav {
   background-color: var(--clr-blue);
+  color: white;
 
   grid-row: 1 / 3;
+  padding: var(--padding-med) var(--padding-sml);
+
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  gap: var(--padding-xlge);
+}
+
+nav i {
+  width: 4rem;
+  text-align: center;
+}
+
+i + p {
+  margin-left: var(--padding-sml);
+}
+
+.nav-title {
+  display: flex;
+  font-size: 2rem;
+  font-weight: 500;
+  align-items: center;
+}
+
+.nav-title i {
+  font-size: 2.5rem;
+}
+
+.page-nav,
+.meta-nav {
+  font-size: 1.5rem;
+}
+
+.page-nav i,
+.meta-nav i {
+  font-size: 1.25rem;
+}
+
+nav li:not(li:last-child) {
+  margin-bottom: var(--padding-med);
+}
+
+nav li a {
+  display: flex;
+  align-items: center;
+}
+
+.credits {
+  align-self: flex-end;
+  justify-self: center;
+}
+
+.credits li {
+  display: flex;
+  justify-content: center;
+}
+
+.credits a {
+  font-style: italic;
 }

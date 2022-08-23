@@ -78,6 +78,7 @@ a {
   --clr-text-grey: #636363;
   --clr-accent: #f0b429;
 
+  --padding-xsml: 0.5rem;
   --padding-sml: 0.75rem;
   --padding-med: 1.5rem;
   --padding-lge: 2.5rem;
@@ -111,7 +112,11 @@ nav i {
 }
 
 i + p {
-  margin-left: var(--padding-sml);
+  margin-left: var(--padding-xsml);
+}
+
+nav a:active {
+  color: var(--clr-accent);
 }
 
 .nav-title {
@@ -128,6 +133,7 @@ i + p {
 .page-nav,
 .meta-nav {
   font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .page-nav i,
@@ -141,6 +147,7 @@ nav li:not(li:last-child) {
 
 nav li a {
   display: flex;
+  width: fit-content;
   align-items: center;
 }
 
@@ -156,4 +163,51 @@ nav li a {
 
 .credits a {
   font-style: italic;
+}
+
+/* ------ ANIMATIONS ------ */
+
+.page-nav a,
+.meta-nav a {
+  position: relative;
+}
+
+.page-nav a::before,
+.meta-nav a::before {
+  position: absolute;
+  content: '';
+  background-color: white;
+  top: calc(55% - 1px);
+  bottom: calc(45% - 2px);
+  left: -20px;
+  right: 95%;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.page-nav a::after,
+.meta-nav a::after {
+  position: absolute;
+  content: '';
+  background-color: white;
+  top: calc(55% - 1px);
+  bottom: calc(45% - 2px);
+  right: -30vw;
+  left: 110%;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.page-nav a:hover::before,
+.meta-nav a:hover::before,
+.page-nav a:hover::after,
+.meta-nav a:hover::after {
+  opacity: 1;
+}
+
+.page-nav a:active::before,
+.meta-nav a:active::before,
+.page-nav a:active::after,
+.meta-nav a:active::after {
+  background-color: var(--clr-accent);
 }
